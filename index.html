@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PagePulse: OS Memory Management Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>PagePulse <span class="subtitle">OS Memory Management Simulation</span></h1>
+    </header>
+    
+    <main>
+        <section class="simulation-inputs">
+            <div class="input-group">
+                <label for="referenceString">Reference String:</label>
+                <input type="text" id="referenceString" placeholder="e.g., 7, 0, 1, 2, 0, 3, 0, 4">
+                <button id="randomizeBtn" title="Generate Random Reference String">
+                    <i class="fas fa-dice"></i>
+                </button>
+            </div>
+            
+            <div class="input-group">
+                <label for="frameCount">Number of Frames:</label>
+                <input type="number" id="frameCount" min="1" max="10" value="3">
+            </div>
+            
+            <div class="input-group">
+                <label>Algorithm:</label>
+                <div class="radio-group">
+                    <input type="radio" id="fifo" name="algorithm" value="fifo" checked>
+                    <label for="fifo">FIFO</label>
+                    
+                    <input type="radio" id="lru" name="algorithm" value="lru">
+                    <label for="lru">LRU</label>
+                    
+                    <input type="radio" id="optimal" name="algorithm" value="optimal">
+                    <label for="optimal">Optimal</label>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button id="startBtn" class="primary-btn">Start Simulation</button>
+                <button id="compareBtn" class="secondary-btn">Compare Algorithms</button>
+                <button id="clearBtn" class="secondary-btn">Clear</button>
+            </div>
+        </section>
+        
+        <section class="simulation-container">
+            <div class="simulation-header">
+                <h2>Simulation</h2>
+                <div class="simulation-controls">
+                    <button id="prevStepBtn" disabled><i class="fas fa-step-backward"></i></button>
+                    <button id="nextStepBtn" disabled><i class="fas fa-step-forward"></i></button>
+                    <button id="playBtn" disabled><i class="fas fa-play"></i></button>
+                    <div class="speed-control">
+                        <label for="simulationSpeed">Speed:</label>
+                        <input type="range" id="simulationSpeed" min="1" max="10" value="5">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="simulation-content">
+                <div class="current-step">
+                    <div class="step-info">
+                        <p>Page Reference: <span id="currentPage">-</span></p>
+                        <p>Step: <span id="currentStep">0</span> / <span id="totalSteps">0</span></p>
+                    </div>
+                    <div class="step-result">
+                        <p>Result: <span id="stepResult">-</span></p>
+                    </div>
+                </div>
+                
+                <div class="memory-frames" id="memoryFrames">
+                    <!-- Frames will be generated dynamically -->
+                </div>
+                
+                <div class="reference-string-visual" id="referenceStringVisual">
+                    <!-- Reference string visualization will be generated dynamically -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="results-container">
+            <h2>Results</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>Page Faults</h3>
+                    <p id="pageFaults">0</p>
+                </div>
+                <div class="result-card">
+                    <h3>Page Hits</h3>
+                    <p id="pageHits">0</p>
+                </div>
+                <div class="result-card">
+                    <h3>Fault Ratio</h3>
+                    <p id="faultRatio">0%</p>
+                </div>
+                <div class="result-card">
+                    <h3>Hit Ratio</h3>
+                    <p id="hitRatio">0%</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="comparison-container" id="comparisonContainer">
+            <h2>Algorithm Comparison</h2>
+            <div class="comparison-results" id="comparisonResults">
+                <!-- Comparison results will be generated dynamically -->
+            </div>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>PagePulse: A Simulation Tool for OS Memory Management and Page Replacement</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

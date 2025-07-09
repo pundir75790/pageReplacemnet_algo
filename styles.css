@@ -1,0 +1,427 @@
+/* Base styles and reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3b82f6;
+    --secondary-color: #10b981;
+    --accent-color: #f59e0b;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --light-text: #64748b;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+h1 .subtitle {
+    font-size: 0.9rem;
+    font-weight: normal;
+    opacity: 0.8;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+main {
+    max-width: 1200px;
+    width: 95%;
+    margin: 2rem auto;
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    background-color: var(--text-color);
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Section styling */
+section {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Input controls styling */
+.input-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.input-group label {
+    font-weight: 600;
+    margin-right: 1rem;
+    min-width: 150px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"] {
+    flex: 1;
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#randomizeBtn {
+    margin-left: 0.5rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#randomizeBtn:hover {
+    background-color: #e09000;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.primary-btn:hover {
+    background-color: #2563eb;
+}
+
+.secondary-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.secondary-btn:hover {
+    background-color: #f0f9ff;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Simulation controls */
+.simulation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.simulation-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.simulation-controls button {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.simulation-controls button:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.speed-control label {
+    margin-right: 0.5rem;
+}
+
+/* Simulation content */
+.simulation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.current-step {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.memory-frames {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 200px;
+}
+
+.frame-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.frame-label {
+    text-align: right;
+    font-weight: 600;
+    color: var(--light-text);
+}
+
+.frames {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.frame {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: all 0.3s;
+}
+
+.frame.empty {
+    background-color: #f1f5f9;
+    color: var(--light-text);
+}
+
+.frame.hit {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.frame.fault {
+    background-color: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+}
+
+.frame.selected {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.reference-string-visual {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+}
+
+.reference-item {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.reference-item.current {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.reference-item.hit {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.reference-item.fault {
+    background-color: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+}
+
+.reference-item.past {
+    opacity: 0.6;
+}
+
+/* Results styling */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.result-card {
+    background-color: #f1f5f9;
+    padding: 1.25rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.result-card h3 {
+    color: var(--light-text);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Comparison section */
+.comparison-container {
+    display: none;
+}
+
+.comparison-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.algorithm-result {
+    background-color: #f1f5f9;
+    padding: 1.25rem;
+    border-radius: 6px;
+}
+
+.algorithm-result h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.result-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.chart-container {
+    height: 300px;
+    margin-top: 2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .simulation-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .current-step {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .input-group label {
+        margin-bottom: 0.5rem;
+    }
+    
+    .input-group input[type="text"],
+    .input-group input[type="number"] {
+        width: 100%;
+    }
+    
+    .radio-group {
+        margin-top: 0.5rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+} 
